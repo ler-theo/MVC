@@ -1,5 +1,6 @@
 <?php
 
+// Premier
 class Model
 {
 
@@ -12,6 +13,20 @@ class Model
 
 }
 
+//Deuxieme
+class Controller
+{
+
+  private $model;
+
+  public function __construct($model)
+  {
+    $this -> model = $model;
+  }
+
+}
+
+//Troisieme
 class View
 {
 
@@ -31,19 +46,15 @@ class View
 
 }
 
-class Controller
-{
 
-  private $model;
-
-  public function __construct($model)
-  {
-    $this -> model = $model;
-  }
-
-}
-
+//Instance 1
 $model = new Model();
+
+//Instance 2, injection de 1
 $controller = new Controller($model);
+
+//Instance 3, injection de 2(1) et de 1
 $view = new View($controller, $model);
+
+//Appel method 
 echo $view -> output();
